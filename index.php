@@ -1,7 +1,7 @@
 <?php
 // Main entry point for the REST API
-// Redirect to API testing interface
+// Serve the testing interface directly
 
-header("Location: /test_api.php");
-exit();
+// Include and execute test_api.php content
+include_once 'test_api.php';
 ?>

@@ -1,7 +1,11 @@
 FROM php:8.1-apache
 
-# Install PostgreSQL extension
-RUN docker-php-ext-install pdo pdo_pgsql
+# Install system dependencies including PostgreSQL client
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
+    postgresql-client \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pdo_pgsql
 
 # Copy project files
 COPY . /var/www/html/
